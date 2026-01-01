@@ -86,7 +86,7 @@ You need a **media user token** for downloading AAC LC quality and lyrics.
 1. Download the latest release from the [Releases](https://github.com/rwnk-12/apmyx-gui/releases) page
 2. Extract the file using 7-Zip or WinRAR
 3. Run the `apmyx.exe` file
-4. Enter your media user token in the settings
+4. Enter your [media user token](https://github.com/rwnk-12/apmyx-gui?tab=readme-ov-file#getting-your-media-user-token) in the settings
 
 ### Required Tools
 
