@@ -92,7 +92,7 @@ You need a **media user token** for downloading AAC LC quality and lyrics.
 
 You need these tools installed on your computer for apmyx to work properly.
 
-#### Installing mp4box (Required for Music Video Muxing and Tagging)
+#### Installing mp4box (Required for Music Video Muxing and Tagging for Songs/Videos both)
 
 1. Visit [GPAC Downloads](https://gpac.io/downloads/gpac-nightly-builds/)
 2. Download the Windows installer
