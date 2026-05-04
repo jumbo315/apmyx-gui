@@ -8,34 +8,39 @@ A GUI-based Apple Music downloader for Atmos, Lossless, and AAC formats (needs t
 
 Easily download playlists, songs, albums, and artist discographies up to Lossless 24-bit/192kHz, and music videos up to 4K.
 
-- **Music videos, lyrics, AAC LC 256** — only need a [token](https://github.com/rwnk-12/apmyx-gui/blob/master/README.md#getting-your-media-user-token), no wrapper required.
-- **ALAC, Atmos, AAC Binaural, Downmix** — wrapper required. Setup guide for [MacOS](https://github.com/rwnk-12/apmyx-gui?tab=readme-ov-file#wrapper-installation-macos) / [Windows](https://github.com/rwnk-12/apmyx-gui?tab=readme-ov-file#wrapper-installation-windows). ([Additional MacOS guide](https://gist.github.com/mattneub/cd1d7890a5cc26e7e8053f019cb9cd54))
+- **Music videos, lyrics, AAC LC 256** only need a [token](https://github.com/rwnk-12/apmyx-gui/blob/master/README.md#getting-your-media-user-token), no wrapper required.
+- **ALAC, Atmos, AAC Binaural, Downmix** require the wrapper. Setup guide for [MacOS](https://github.com/rwnk-12/apmyx-gui?tab=readme-ov-file#wrapper-installation-macos) / [Windows](https://github.com/rwnk-12/apmyx-gui?tab=readme-ov-file#wrapper-installation-windows). ([Additional MacOS guide](https://gist.github.com/mattneub/cd1d7890a5cc26e7e8053f019cb9cd54))
 
 ## Features
 
-**Easy Search** — search songs and artists directly in the app.
+**Easy Search** - search songs and artists directly in the app.
 
 <img width="1919" height="1021" alt="v1-main" src="https://github.com/user-attachments/assets/40cfb001-301a-412c-b3dd-c74ee0d7d099" />
 
-**Quality Selection** — check available audio qualities before downloading.
+**Quality Selection** - check available audio qualities before downloading.
 
 <img width="1918" height="1021" alt="quality" src="https://github.com/user-attachments/assets/49b57177-2e3c-403a-80fa-4b97734a84f6" />
 
-**Artist Discography** — download a full discography with one click.
+**Artist Discography** - download a full discography with one click.
 
 <img width="1917" height="955" alt="artist_page" src="https://github.com/user-attachments/assets/ee4fad29-8d22-4777-aafc-8a5b464a30ef" />
 
-**Lyrics Sync** — sync your music library with lyrics.
+**Lyrics Sync** - sync your music library with lyrics.
 
 <img width="1912" height="984" alt="lyrics" src="https://github.com/user-attachments/assets/e00c230e-d2e3-46f3-8a39-743ce4f79a9e" />
 
-**Selective Downloads** — pick specific tracks, albums, or music videos.
+**Selective Downloads** - pick specific tracks, albums, or music videos.
 
 <img width="1919" height="946" alt="select" src="https://github.com/user-attachments/assets/87877732-7952-4e59-8ca4-a4121c91cf51" />
 
 ## Requirements
 
-You need an **active Apple Music subscription** to download music.
+- An **active Apple Music subscription**
+- [mp4box](https://gpac.io/downloads/gpac-nightly-builds/) - required for music video muxing and song/video tagging
+- [mp4decrypt](https://www.bento4.com/downloads/) - required for music video downloads
+- [FFmpeg](https://www.ffmpeg.org/download.html) - required for animated artwork
+
+Make sure all three tools are added to your system PATH. Restart your computer after doing so.
 
 ## Getting Your Media User Token
 
@@ -43,38 +48,20 @@ You need an **active Apple Music subscription** to download music.
 
 1. Open [music.apple.com](https://music.apple.com) and log in.
 2. Open DevTools (`Ctrl+Shift+I` / `Cmd+Option+I`).
-3. Go to **Application → Storage → Cookies → https://music.apple.com**.
+3. Go to **Application -> Storage -> Cookies -> https://music.apple.com**.
 4. Find `media-user-token` and copy its value.
 
 ### Method 2: Cookie Export Extension
 
 Install [Get cookies.txt LOCALLY](https://chromewebstore.google.com/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc) (Chrome) or [Export Cookies](https://addons.mozilla.org/en-US/firefox/addon/export-cookies-txt/) (Firefox), export cookies from `music.apple.com`, and copy the value next to `media-user-token`.
 
-> **Note:** Paste the token exactly as-is — no leading/trailing spaces. Extra spaces will cause errors. You can also set it manually in `config.yaml`.
+> **Note:** Paste the token exactly as-is with no leading or trailing spaces. Extra spaces will cause errors. You can also set it manually in `config.yaml`.
 
 ## Installation
 
 1. Download the latest release from [Releases](https://github.com/rwnk-12/apmyx-gui/releases) and extract it.
 2. Run `apmyx.exe`.
 3. Enter your [media user token](https://github.com/rwnk-12/apmyx-gui?tab=readme-ov-file#getting-your-media-user-token) in settings.
-
-### Required Tools
-
-#### mp4box (Required for music video muxing and song/video tagging)
-1. Download the Windows installer from [GPAC](https://gpac.io/downloads/gpac-nightly-builds/) and install to the default location.
-2. Add `C:\Program Files\GPAC` to your system PATH.
-
-#### mp4decrypt (Required for music video downloads)
-1. Download [Bento4 Binaries for Windows](https://www.bento4.com/downloads/) and extract.
-2. Move contents to `C:\bento4`.
-3. Add `C:\bento4\bin` to your system PATH.
-
-#### FFmpeg (Required for animated artwork)
-1. Download `ffmpeg-git-full.7z` from [gyan.dev](https://www.ffmpeg.org/download.html).
-2. Extract, rename the folder to `ffmpeg`, and move it to `C:\ffmpeg`.
-3. Add `C:\ffmpeg\bin` to your system PATH.
-
-> **Restart your computer after adding all tools to PATH.**
 
 ## Wrapper Installation (Windows)
 
@@ -84,7 +71,7 @@ Only needed for **ALAC, Atmos, AAC Binaural, AAC Downmix**.
 2. Run `0-1 Install WSL1(need to reboot later).bat` and restart your computer.
 3. Run `0-2 Install Ubuntu-AMDL(only once).bat`.
 4. Open `1. Run decryptor (!!!need to replace username and password in this file).bat` in Notepad, replace `username:password` with your Apple Music credentials (enclose in quotes, e.g. `"email@example.com:password"`), save, and run it.
-5. Wait for `response type 6 and listening status` — keep this window open while using apmyx.
+5. Wait for `response type 6 and listening status` and keep this window open while using apmyx.
 
 Then download and run `apmyx.exe` from [releases](https://github.com/rwnk-12/apmyx-gui/releases), or run from source:
 
@@ -129,7 +116,7 @@ python main.py
 
 ---
 
-> Wrapper steps 1–3 are based on the guide by [itouakirai](https://github.com/itouakirai/docs). For wrapper issues, [open an issue here](https://github.com/itouakirai/docs/issues/new?title=Issue%20on%20docs&body=Path:%20/amdl/quickstart/macos). For another detailed MacOS guide, see [this gist](https://gist.github.com/mattneub/cd1d7890a5cc26e7e8053f019cb9cd54).
+> Wrapper steps 1-3 are based on the guide by [itouakirai](https://github.com/itouakirai/docs). For wrapper issues, [open an issue here](https://github.com/itouakirai/docs/issues/new?title=Issue%20on%20docs&body=Path:%20/amdl/quickstart/macos). For another detailed MacOS guide, see [this gist](https://gist.github.com/mattneub/cd1d7890a5cc26e7e8053f019cb9cd54).
 
 ---
 
